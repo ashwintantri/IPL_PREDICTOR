@@ -6,6 +6,7 @@ from sklearn.naive_bayes import BernoulliNB as bNB
 from sklearn.naive_bayes import GaussianNB as gNB
 from sklearn.naive_bayes import MultinomialNB as mNB
 from sklearn.model_selection import train_test_split
+from sklearn.externals import joblib
 
 from numpy import array
 
@@ -76,6 +77,8 @@ gnb.fit(
 
 
 #y_pred = gnb.predict(X_test[used_features])
+
+joblib.dump(gnb, 'naive_bayes.pkl')
 
 test = []
 test.append(( '7',
