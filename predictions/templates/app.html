@@ -178,6 +178,9 @@
 <script type="text/javascript" src = "https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src = "https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+
+
+
 </head>
 <body>
 	<section style="background:#efefe9;">
@@ -210,8 +213,8 @@
 					</ul></div>
 
 					<div class="tab-content">
-						<div class="tab-pane active" id="clustering">
-
+						<div class="tab-pane active" id = "clustering">
+							<div id="cluster_form">
 							<h3 class="head text-center">Clustering By K-Mean Algorithm </h3>
 
 							<form>
@@ -225,11 +228,9 @@
 										<button id = "submit_btn" class="btn btn-success btn-outline-rounded green"> Check Cluster <span style="margin-left:10px;"></span></button>
 									</p>
 								</div>
-
-
 							</form>
 						</div>
-						<button class = "btn btn-primary" id = "back_button" style="margin: 10px">Back</button>
+							<button class = "btn btn-primary" id = "back_button" style="margin: 10px">Back</button>
 						<table id="data" class="table table-striped table-bordered" style="width:100%;">
 								<thead>
 									<tr>
@@ -250,7 +251,12 @@
 									{% endfor %}
 								</tbody>
 							</table>
+						</div>
+
+
 						<div class="tab-pane" id="naive">
+
+						<div id = "naive_form">
 							<h3 class="head text-center">
 
 								Classification By Naive Bayesian
@@ -261,21 +267,21 @@
 
 								<div class="col-lg-6 col-lg-offset-3">
 									<label for="first_team">Select Your Team:</label>
-									<select class="form-control form-control-lg" name="first_team" required>
+									<select class="form-control form-control-lg" id="first_team" name="first_team" required >
 										<option value="">Choose... </option>
-										<option value="KKR">Kolkata Knight Riders</option>
-										<option value="RCB">Royal Challengers Banglore</option>
-										<option value="CSK">Chennai Super Kings</option>
-										<option value="KXIP">Kings XI Punjab</option>
-										<option value="RR">Rajasthan Royals</option>
-										<option value="DD">Delhi Daredevils</option>
-										<option value="MI">Mumbai Indians</option>
-										<option value="DC">Deccan Chargers</option>
-										<option value="KTK">Kochi Tuskers Kerala</option>
-										<option value="PW">Pune Worriors</option>
-										<option value="SRH">Sunrises Hyderabad</option>
-										<option value="RPS">Rising Pune Supergiants</option>
-										<option value="GL">Gujarat Lions</option>
+										<option value="1">Kolkata Knight Riders</option>
+										<option value="2">Royal Challengers Banglore</option>
+										<option value="3">Chennai Super Kings</option>
+										<option value="4">Kings XI Punjab</option>
+										<option value="5">Rajasthan Royals</option>
+										<option value="6">Delhi Daredevils</option>
+										<option value="7">Mumbai Indians</option>
+										<option value="8">Deccan Chargers</option>
+										<option value="9">Kochi Tuskers Kerala</option>
+										<option value="10">Pune Worriors</option>
+										<option value="11">Sunrises Hyderabad</option>
+										<option value="12">Rising Pune Supergiants</option>
+										<option value="13">Gujarat Lions</option>
 									</select>
 								</div>
 
@@ -284,73 +290,83 @@
 
 								<div class="col-lg-6 col-lg-offset-3" style="margin-top: 15px;">
 									<label for="second_team">Select Opponent Team:</label>
-									<select class="form-control form-control-lg" name="second_team" required>
+									<select class="form-control form-control-lg" name="second_team" id="second_team" required onchange="toss()" >
 										<option value="">Choose... </option>
-										<option value="KKR">Kolkata Knight Riders</option>
-										<option value="RCB">Royal Challengers Banglore</option>
-										<option value="CSK">Chennai Super Kings</option>
-										<option value="KXIP">Kings XI Punjab</option>
-										<option value="RR">Rajasthan Royals</option>
-										<option value="DD">Delhi Daredevils</option>
-										<option value="MI">Mumbai Indians</option>
-										<option value="DC">Deccan Chargers</option>
-										<option value="KTK">Kochi Tuskers Kerala</option>
-										<option value="PW">Pune Worriors</option>
-										<option value="SRH">Sunrises Hyderabad</option>
-										<option value="RPS">Rising Pune Supergiants</option>
-										<option value="GL">Gujarat Lions</option>
+										<option value="1">Kolkata Knight Riders</option>
+										<option value="2">Royal Challengers Banglore</option>
+										<option value="3">Chennai Super Kings</option>
+										<option value="4">Kings XI Punjab</option>
+										<option value="5">Rajasthan Royals</option>
+										<option value="6">Delhi Daredevils</option>
+										<option value="7">Mumbai Indians</option>
+										<option value="8">Deccan Chargers</option>
+										<option value="9">Kochi Tuskers Kerala</option>
+										<option value="10">Pune Worriors</option>
+										<option value="11">Sunrises Hyderabad</option>
+										<option value="12">Rising Pune Supergiants</option>
+										<option value="13">Gujarat Lions</option>
 									</select>
+
+								</div>
+									<div class="col-lg-6 col-lg-offset-3" style="margin-top: 15px;">
+										<label for="toss">Select Toss Winning Team:
+										</label>
+
+										<select class="form-control form-control-lg" name="toss_team" id="toss_team" required>
+
+										</select>
+								</div>
+
+								<div class="col-lg-6 col-lg-offset-3" style="margin-top: 15px;">
+										<label for="toss">Winning Team opted:</label>
+										<select class="form-control form-control-lg" name="team_opted" id="team_opted" required>
+											<option value="1">Batting</option>
+											<option value="0">Bowling</option>
+										</select>
 								</div>
 
 
 								<div class="form-group col-lg-offset-3 col-lg-6">
 									<p class="text-center">
-										<a href="" class="btn btn-success btn-outline-rounded green"> Check Result</a>
+										<a href="" class="btn btn-success btn-outline-rounded green" id="predictWinner"> Check Result</a>
 									</p>
 								</div>
 							</form>
 
 						</div>
 
+						<div id = "naive_result"></div>
+
+						</div>
+
 
 						<div class="tab-pane" id="prediction">
+							<div id = "prediction_form">
 							<h3 class="head text-center">Prediction By Linear Regression Algorithm </h3>
 
 							<form action="">
 
 								<div class="form-group col-lg-offset-3 col-lg-6">
-									<input type="text" name="batsman_name" class="form-control" placeholder="Enter Batsman Name">
+									<input type="text" id = "runs" class="form-control" placeholder="Enter Runs">
 								</div>
 
-									<div class="col-lg-6 col-lg-offset-3" style="margin-top: 15px;">
-									<label for="second_team">Score Against:</label>
-									<select class="form-control form-control-lg" name="second_team" required>
-										<option value="">Choose... </option>
-										<option value="KKR">Kolkata Knight Riders</option>
-										<option value="RCB">Royal Challengers Banglore</option>
-										<option value="CSK">Chennai Super Kings</option>
-										<option value="KXIP">Kings XI Punjab</option>
-										<option value="RR">Rajasthan Royals</option>
-										<option value="DD">Delhi Daredevils</option>
-										<option value="MI">Mumbai Indians</option>
-										<option value="DC">Deccan Chargers</option>
-										<option value="KTK">Kochi Tuskers Kerala</option>
-										<option value="PW">Pune Worriors</option>
-										<option value="SRH">Sunrises Hyderabad</option>
-										<option value="RPS">Rising Pune Supergiants</option>
-										<option value="GL">Gujarat Lions</option>
-									</select>
+
+								<div class="form-group col-lg-offset-3 col-lg-6">
+									<input type="text" id = "balls" class="form-control" placeholder="Enter balls remaining">
 								</div>
+
+									
 
 								<div class="form-group col-lg-offset-3 col-lg-6" >
 									<p class="text-center">
-										<a href="" class="btn btn-success btn-outline-rounded green">Predict Score<span style="margin-left:10px;"></span></a>
+										<a href="" id = "predictScore" class="btn btn-success btn-outline-rounded green">Predict Score<span style="margin-left:10px;"></span></a>
 									</p>
 								</div>
 
 
 							</form>
-
+							</div>
+							<div id = "prediction_result"></div>
 						</div>
 
 					</div>
@@ -359,26 +375,87 @@
 		</section>
 		<script type="text/javascript">
 
-		</script>
+	function toss(){
+
+		var teams = ["Kolkata Knight Riders","Royal Challengers Banglore","Chennai Super Kings","Kings XI Punjab","Rajasthan Royals","Delhi Daredevils","Mumbai Indians","Deccan Chargers","Kochi Tuskers Kerala","Pune Worriors","Sunrises Hyderabad","Rising Pune Supergiants","Gujarat Lions"];
+		var team_a = document.getElementById('first_team').value;
+		var team_b = document.getElementById('second_team').value;
+
+		document.getElementById("toss_team").innerHTML="<option value="+team_a+">"+teams[team_a-1]+"</option><option value="+team_b+">"+teams[team_b-1]+"</option>";
+		
+	}
+</script>
+		
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('#data').DataTable();
 				$('#data').parents('div.dataTables_wrapper').first().hide();
 				$("#back_button").hide();
+				$("#cluster_form").show();
+
 				$("#submit_btn").click( (e) => {
 					e.preventDefault();
 					filter = $("#player_name_cluster").val();
-					$("#clustering").hide();
+					$("#cluster_form").hide();
 					$('#data').DataTable().search(filter).draw();
 					$('#data').parents('div.dataTables_wrapper').first().show();
 					$("#back_button").show();
 				});
+
 				$("#back_button").click( (e) => {
 					e.preventDefault();
-					$("#clustering").show();
+					$("#cluster_form").show();
 					$('#data').parents('div.dataTables_wrapper').first().hide();
 					$("#back_button").hide();
 				});
+
+
+				$("#predictWinner").click( (e) => {
+					e.preventDefault();
+					var x = $("#first_team").val();
+					var y = $("#second_team").val();
+					var z = $("#toss_team").val();
+					var a = $("#team_opted").val();
+					getWinner(x, y, z, a);
+				});
+
+				$("#predictScore").click( (e) => {
+					e.preventDefault();
+					var x = $("#runs").val();
+					var y = $("#balls").val();
+					getRuns(x, y);
+				});
+
+				getWinner = (team_a, team_b, team_toss, team_opted) => {
+					$.ajax({
+							url: '/predictWinner?team_a='+team_a+"&team_b="+team_b+"&team_toss="+team_toss+"&team_choose="+team_opted,
+							success: (result) => {
+								$("#naive_form").hide();
+								$("#naive_result").html("<center><h1>You will " + result + "</h1><button id = 'naive_back' class = 'btn btn-primary'>Back</button></center>");
+								$("#naive_back").click( (e) => {
+									e.preventDefault();
+									$("#naive_form").show();
+									$("#naive_result").hide();
+								});
+							}
+					});
+				};
+
+				getRuns = (runs, balls)=>{
+					$.ajax({
+							url: '/predictScore?x='+runs+'&y='+balls,
+							success: (result) => {
+								$("#prediction_form").hide();
+								$("#prediction_result").html("<center><h1>The predicted score is " + result + "</h1><button id = 'prediction_back' class = 'btn btn-primary'>Back</button></center>");
+								$("#prediction_back").click( (e) => {
+									e.preventDefault();
+									$("#prediction_form").show();
+									$("#prediction_result").hide();
+								});
+							}
+					});
+				};
+
 			} );
 		</script>
 		</body>
