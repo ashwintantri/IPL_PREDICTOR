@@ -51,7 +51,7 @@
 	.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 		color: #555555;
 		cursor: default;
-		/* background-color: #ffffff; */
+		 background-color: transparent; 
 		border: 0;
 		border-bottom-color: transparent;
 	}
@@ -254,7 +254,7 @@
 						</div>
 
 
-						<div class="tab-pane" id="naive">
+						<div class="tab-pane" id="naive" style="padding-top: 5px;">
 
 						<div id = "naive_form">
 							<h3 class="head text-center">
@@ -286,7 +286,7 @@
 								</div>
 
 
-								<br><br>
+								<br>
 
 								<div class="col-lg-6 col-lg-offset-3" style="margin-top: 15px;">
 									<label for="second_team">Select Opponent Team:</label>
@@ -434,8 +434,8 @@
 								$("#naive_result").html("<center><h1>You will " + result + "</h1><button id = 'naive_back' class = 'btn btn-primary'>Back</button></center>");
 								$("#naive_back").click( (e) => {
 									e.preventDefault();
-									$("#naive_form").show();
-									$("#naive_result").hide();
+									 window.location.reload();
+									
 								});
 							}
 					});
@@ -449,8 +449,7 @@
 								$("#prediction_result").html("<center><h1>The predicted score is " + result + "</h1><button id = 'prediction_back' class = 'btn btn-primary'>Back</button></center>");
 								$("#prediction_back").click( (e) => {
 									e.preventDefault();
-									$("#prediction_form").show();
-									$("#prediction_result").hide();
+									 window.location.reload();
 								});
 							}
 					});
