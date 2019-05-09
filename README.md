@@ -4,12 +4,9 @@ It is a machine learning based project that predicts statistics based on previou
 ## INSTALLATION and SETUP :computer:
 
 1. [Install Django.](https://docs.djangoproject.com/en/2.0/topics/install/)
-2. Run
-```sh
-pip3 install -r requirements.txt 
-```
 2. Clone the repository and run
 ```sh
+pip3 install -r requirements.txt
 python3 manage.py runserver
 ```
 3. Follow the instructions
